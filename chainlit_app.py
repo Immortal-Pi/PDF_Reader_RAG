@@ -23,7 +23,7 @@ def build_sys_prompt(history:List[Tuple[str,str]])->str:
 
 async def generate_completion(system_prompt:str,user_prompt:str) ->AsyncGenerator[str,None]:
     url=f"{BASE_URL}v1/chat/completions"
-    header={"Content-Type":"application/json"}
+    headers={"Content-Type":"application/json"}
 
     data={
         "model":MODEL,
@@ -68,4 +68,4 @@ async def generate_completion(system_prompt:str,user_prompt:str) ->AsyncGenerato
             conversation_history.append((user_prompt,full_response))
             print('HISTORY:',conversation_history)
         except Exception as e:
-            await cl.Message(content=f'An error occurred: {}')
+            await cl.Message(content=f'An error occurred: {str(e)}').send()

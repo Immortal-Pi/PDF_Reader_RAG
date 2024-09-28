@@ -17,8 +17,8 @@ groq_api_key=os.environ['GROQ_API_KEY']
 
 if "vector" not in st.session_state:
     st.session_state.embeddings=OllamaEmbeddings()
-    st.session_state.loader = WebBaseLoader("https://paulgraham.com/greatwork.html")
-    # st.session_state.loader = WebBaseLoader('file:///D:/pythonProjects/LammaIndex/PDF_Answers/resources/Database%20System%20-%20Design,%20Implementation%20and%20Management%20(12th%20edition).pdf')
+    # st.session_state.loader = WebBaseLoader("https://paulgraham.com/greatwork.html")
+    st.session_state.loader = WebBaseLoader('D:/pythonProjects/LammaIndex/PDF_Answers/resources/Database%20System%20-%20Design,%20Implementation%20and%20Management%20(12th%20edition).pdf')
     st.session_state.docs=st.session_state.loader.load()
 
     st.session_state.text_splitter=RecursiveCharacterTextSplitter(chunk_size=1000,chunk_overlap=200)
